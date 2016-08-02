@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!DOCTYPE benchmark SYSTEM "benchmark.dtd">
+
+<benchmark tool="cpachecker" timelimit="1000" hardtimelimit="1100" memlimit="30GB" cpuCores="4">
+
+  <option name="-heap">26000M</option>
+
+  <option name="-noout"/>
+  <option name="-disable-java-assertions"/>
+  <option name="-skipRecursion" />
+
+  <option name="-setprop">statistics.memory=false</option>
+  <option name="-setprop">cpa.predicate.precisionStatistics=false</option>
+  <option name="-setprop">reachedSet.printDetailedStatistics=false</option>
+
+  <option name="-mpa-alg-predicate-abelf"/>
+  <option name="-setprop">automata.properties.granularity=BASENAME</option>
+  <option name="-setprop">analysis.mpa.partition.operator=AllThenNoneOperator</option>
+  <option name="-setprop">analysis.mpa.partition.time.cpu=900s</option>
+
+  <sourcefiles name="main">
+    <includesfile>./tasks-plain-main0/main.set</includesfile>
+    <option name="-entryfunction">main</option>
+  </sourcefiles>
+
+  <requiredfiles>./specs/*</requiredfiles>
+
+  <rundefinition name="1.ABElf-900.main.LDV_68_1a">
+      <option name="-spec">${benchmark_path}/specs/LDV_68_1a_encode.spc</option>
+  </rundefinition>
+
+  <rundefinition name="2.ABElf-900.main.LDV_118_1a">
+      <option name="-spec">${benchmark_path}/specs/LDV_118_1a_encode.spc</option>
+  </rundefinition>
+
+  <rundefinition name="3.ABElf-900.main.LDV_43_1a">
+      <option name="-spec">${benchmark_path}/specs/LDV_43_1a_encode.spc</option>
+  </rundefinition>
+
+  <rundefinition name="4.ABElf-900.main.LDV_08_1a">
+      <option name="-spec">${benchmark_path}/specs/LDV_08_1a_encode.spc</option>
+  </rundefinition>
+
+  <rundefinition name="5.ABElf-900.main.LDV_132_1a">
+      <option name="-spec">${benchmark_path}/specs/LDV_132_1a_encode.spc</option>
+  </rundefinition>
+
+  <rundefinition name="6.ABElf-900.main.LDV_106_1a">
+      <option name="-spec">${benchmark_path}/specs/LDV_106_1a_encode.spc</option>
+  </rundefinition>
+
+  <rundefinition name="7.ABElf-900.main.LDV_134_1a">
+      <option name="-spec">${benchmark_path}/specs/LDV_134_1a_encode.spc</option>
+  </rundefinition>
+
+  <rundefinition name="8.ABElf-900.main.LDV_77_1a">
+      <option name="-spec">${benchmark_path}/specs/LDV_77_1a_encode.spc</option>
+  </rundefinition>
+
+  <rundefinition name="9.ABElf-900.main.LDV_10_1a">
+      <option name="-spec">${benchmark_path}/specs/LDV_10_1a_encode.spc</option>
+  </rundefinition>
+
+  <rundefinition name="10.ABElf-900.main.LDV_129_1a">
+      <option name="-spec">${benchmark_path}/specs/LDV_129_1a_encode.spc</option>
+  </rundefinition>
+
+  <rundefinition name="11.ABElf-900.main.LDV_147_1a">
+      <option name="-spec">${benchmark_path}/specs/LDV_147_1a_encode.spc</option>
+  </rundefinition>
+
+  <rundefinition name="12.ABElf-900.main.LDV_68_1b">
+      <option name="-spec">${benchmark_path}/specs/LDV_68_1b_encode.spc</option>
+  </rundefinition>
+
+  <rundefinition name="13.ABElf-900.main.LDV_32_1a">
+      <option name="-spec">${benchmark_path}/specs/LDV_32_1a_encode.spc</option>
+  </rundefinition>
+
+  <rundefinition name="14.ABElf-900.main.LDV_101_1a">
+      <option name="-spec">${benchmark_path}/specs/LDV_101_1a_encode.spc</option>
+  </rundefinition>
+
+</benchmark>

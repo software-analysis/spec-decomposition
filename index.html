@@ -1,0 +1,647 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" >
+<head>
+    <link rel="stylesheet" type="text/css" href="combined.css" />
+    <meta http-equiv="content-language" content="en" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <meta name="description" content="On-The-Fly Decomposition of Specifications in Software Model Checking" />
+    <meta name="keywords" content="Software Model Checking Decomposition" />
+    <title>On-The-Fly Decomposition of Specifications in Software Model Checking</title>
+
+<style type="text/css">
+pre {
+background-color: #F1F1F1;
+margin-bottom: 1em;
+padding: 1em;
+}
+.raw-results {
+width: 100%;
+margin-left:auto;
+margin-right:auto;
+margin-bottom:2em;
+}
+
+.raw-results tbody tr:hover {
+background-color: #F1F1F1;
+}
+
+.raw-results thead tr {
+border-bottom:1px solid black;
+}
+
+.raw-results {
+border-bottom:3px solid black;
+}
+
+p.values {
+font-style: italic;
+}
+
+p.values span {
+color:gray;
+}
+
+col.key {
+width:15em;
+}
+
+span.mono {
+font-family:"monospace";
+}
+
+span.tool {
+    font-variant: small-caps;
+}
+
+.subheading {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+</style>
+</head>
+
+<body>
+  <div class="paper" id="content">
+
+    <div class="heading">
+    <h1>On-The-Fly Decomposition<br />of Specifications<br />in Software Model Checking</h1>
+    <h1 class="subheading">&mdash;Replication Package&mdash;</h1>
+    <p class="authors">
+        <a href="http://www.infosun.fim.uni-passau.de/spl/apel/">Sven Apel</a>,
+        <a href="http://www.sosy-lab.org/people-beyer.php">Dirk Beyer</a>,
+        <a href="http://linuxtesting.org/">Vitaly Mordan</a>,
+        <a href="http://linuxtesting.org/">Vadim Mutilin</a>,
+        and <a href="http://research.stahlbauer.net/">Andreas Stahlbauer</a>
+    </p>
+    </div>
+
+    <h2>Abstract</h2>
+    <div class="abstract">
+    <p>
+      Software model checking has gained considerable momentum in the last decade.
+      Major breakthroughs have increased its efficiency and effectiveness considerably
+      such that this technology is now applicable to industrial-scale software.
+      However, verifying the full formal specification of a software module
+      is still considered too complex, and in practice, sets of properties are
+      verified one by one in isolation.
+    </p>
+    <p>
+      We propose an approach that takes the full formal specification as input
+      and verifies <em>all properties simultaneously</em> in one verification run.
+      Our verification algorithm monitors itself and detects situations for that
+      the full set of properties is too complex.
+      In such cases, we perform an <em>automatic decomposition</em>
+      of the full set of properties into smaller sets,
+      and the verification is seamlessly continued on the smaller sets.
+      To avoid state-space explosion for large sets of properties,
+      we introduce <em>on-the-fly property weaving</em>.
+      Properties get weaved on the fly, along with the analysis;
+      which properties to weave, or check, can be decided dynamically during the verification process.
+    </p>
+    <p>
+      We perform an extensive evaluation based on verification
+      tasks that were derived from 4336 Linux kernel modules,
+      and a set of properties that define the correct usage of the Linux API.
+      Checking several properties simultaneously can lead to a <em>significant increase
+      of the efficiency</em>, due to the fact that abstract
+      models share many parts among different properties.
+    </div>
+
+    <h2 id="data">Supplementary Data</h2>
+    <p>
+        We performed an extensive experimental evaluation to illustrate the potential
+        and feasibility of our approach. The central parts of our replication package can be found here:
+    </p>
+
+    <table class="raw-results">
+        <thead>
+            <tr>
+                <th>Artifact</th>
+                <th>Download</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Full set of 4336 Linux 4.0-rc1 kernel modules.</td>
+                <td><a href="https://github.com/software-analysis/spec-decomposition/releases/download/FSE16/tasks-main0.zip">Archive (compressed: 177 MB)</a></td>
+            </tr>
+            <tr>
+                <td>Reduced set of 250 randomly chosen Linux 4.0-rc1 kernel modules<br />with at least two relevant properties.</td>
+                <td><a href="https://github.com/software-analysis/spec-decomposition/releases/download/FSE16/tasks-main0-atleast2-rand250.zip">Archive (compressed: 15 MB)</a></td>
+            </tr>
+            <tr>
+                <td>Set of properties (for on-the-fly weaving with CPAchecker).</td>
+                <td><a href="https://github.com/software-analysis/spec-decomposition/releases/download/FSE16/properties.zip">Archive (compressed: 7 KB)</a></td>
+            </tr>
+            <tr>
+                <td>Full table with results used to answer RQ1.1 and RQ1.2.</td>
+                <td>
+                    <a href="table3-full.html">HTML</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Relevance of properties</td>
+                <td>
+                    <a href="table-relevance-byprop.html">HTML</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Benchmark definition files (XML)</td>
+                <td>
+                    <a href="https://github.com/software-analysis/spec-decomposition/releases/download/FSE16/bench-defs.zip">Archive (compressed: 8 KB)</a>
+                </td>
+            </tr>
+            <tr>
+                <td><span style="font-variant: small-caps;">CPAchecker</span> in revision 21027</td>
+                <td><a href="CPAchecker-muauto.tar.bz2">Archive (compressed: 71 MB)</a></td>
+            </tr>
+            <tr>
+                <td><span style="font-variant: small-caps;">CPAchecker</span> in revision 21027, all benchmark definition files, and all verification tasks.</td>
+                <td><a href="https://github.com/software-analysis/spec-decomposition/releases/download/FSE16/CPAchecker-package.zip">Archive (compressed: 292 MB)</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 id="specification">Specification</h2>
+
+    <table class="raw-results">
+    <thead>
+        <tr>
+            <th>Property</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+    LDV_08_1a
+            </td>
+            <td>
+    Each module that was referenced with <span class="mono">module_get</span>
+    must be released <span class="mono">by module_put</span>.
+	<a href="https://www.kernel.org/pub/linux/utils/kernel/module-init-tools/FAQ">
+	More Information on kernel.org.
+	</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+LDV_10_1a
+            </td>
+            <td>
+              Each memory allocation that gets performed in the context
+              of an interrupt must use the flag <span class="mono">GFP_ATOMIC</span>.
+            </td>
+        </tr>
+        <tr>
+            <td>
+LDV_32_1a
+            </td>
+            <td>
+              The same mutex must not be acquired or released twice in the same process.
+            </td>
+        </tr>
+        <tr>
+            <td>
+LDV_43_1a
+            </td>
+            <td>
+              Each memory allocation must use the flag <span class="mono">GFP_ATOMIC</span> if
+              a spinlock is held.
+            </td>
+        </tr>
+        <tr>
+            <td>
+LDV_68_1a
+            </td>
+            <td>
+              All resources that were allocated with <span class="mono">usb_alloc_urb</span>
+              must be released with <span class="mono">usb_free_urb</span>.
+            </td>
+        </tr>
+        <tr>
+            <td>
+LDV_68_1b
+            </td>
+            <td>
+              Each DMA-consistent buffer that was allocated with <span class="mono">usb_alloc_coherent</span>
+              must be released by calling <span class="mono">usb_free_coherent</span>.
+            </td>
+        </tr>
+        <tr>
+            <td>
+LDV_77_1a
+            </td>
+            <td>
+              Each memory allocation in a code region with an active
+              mutex must be peformed with the flag <span class="mono">GFP_NOIO</span>.
+            </td>
+        </tr>
+        <tr>
+            <td>
+LDV_101_1a
+            </td>
+            <td>
+              All structs that were obtained with <span class="mono">blk_make_request</span>
+              must be released by calling <span class="mono">blk_put_request</span> afterwards.
+	            <a href="https://www.kernel.org/doc/htmldocs/kernel-api/API-blk-make-request.html">
+	                More Information on kernel.org.
+	            </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+LDV_106_1a
+            </td>
+            <td>
+              The modules <span class="mono">gadget</span>, <span class="mono">char</span>,
+              and <span class="mono">class</span> that were registered with
+              <span class="mono">usb_gadget_probe_driver</span>,
+              <span class="mono">register_chrdev</span>,
+              and <span class="mono">class_register</span> must be unregistered by calling
+              <span class="mono">usb_gadget_unregister_driver</span>,
+              <span class="mono">unregister_chrdev</span>
+              and <span class="mono">class_unregister</span> correspondingly in reverse order
+              of the registration.
+            </td>
+        </tr>
+        <tr>
+            <td>
+LDV_118_1a
+            </td>
+            <td>
+    Reader-writer spinlocks must be used in the correct order.
+            </td>
+        </tr>
+        <tr>
+            <td>
+LDV_129_1a
+            </td>
+            <td>
+    An offset argument of a <span class="mono">find_bit</span> function
+    must not be greater than the size of the corresponding array.
+            </td>
+        </tr>
+        <tr>
+            <td>
+LDV_132_1a
+            </td>
+            <td>
+    Each device that was allocated by <span class="mono">by usb_get_dev</span>
+    must be released with <span class="mono">usb_put_dev</span>.
+            </td>
+        </tr>
+        <tr>
+            <td>
+LDV_134_1a
+            </td>
+            <td>
+              The <span class="mono">probe</span> functions must return a non-zero
+              value in case of a failed call to <span class="mono">register_netdev</span> or  <span class="mono">usb_register</span>.
+            </td>
+        </tr>
+        <tr>
+            <td>
+LDV_147_1a
+            </td>
+            <td>
+    RCU pointer/list update operations must not be used inside RCU read-side
+    critical sections.
+	<a href="https://www.kernel.org/doc/Documentation/RCU/whatisRCU.txt">
+	More Information on kernel.org.
+	</a>
+            </td>
+        </tr>
+
+    </tbody>
+    </table>
+
+    <h2 id="reproducing">Reproducing the Results</h2>
+
+    <h3>Prerequisites (Virtual Machine)</h3>
+
+    <p>
+      We have configured a virtual machine (based on an Ubuntu 16.04) which includes everything that is needed
+      for reproducing our experimental results.
+      The machine can be <a href="http://www.infosun.fim.uni-passau.de/se/stahlbauer/FSE16-spec-decomposition-updated.ova">downloaded here</a>.
+      Both the <em>username</em>, and the <em>password</em>, is <strong>"fse"</strong> (without the quotes).
+      The contents of the replication package can be found in the
+      $BASE directory <tt>/home/fse/fse16-spec-decomposition</tt>.
+    </p>
+
+    <p>
+      <strong>Important:</strong> Due to the limitations of the virtual machine (8 GB of RAM, 1 CPU core),
+        the virtual machine ships with benchmark-definition files that specify
+        lower resource requirements.
+    </p>
+
+    <h3>Prerequisites (Manually)</h3>
+
+    <p>
+        In the following we will explain how our experimental results can be reproduced.
+        A detailed description of our benchmarking configuration can be
+         found in the paper.
+        We presume that you have a machine that meets (at least) the following
+        requirements (other configurations could work as well):
+    </p>
+    <ul>
+        <li>Desktop operating system based on Linux 3.x</li>
+        <li>OpenJDK 1.7 (or compatible)</li>
+        <li><strong>32 GiB of RAM</strong> (less RAM would work in many cases; you would have to adjust some of the benchmark definition files manually)</li>
+    </ul>
+
+    <p>
+        First of all, please choose the root directory <tt>$BASE</tt> to which we extract all the
+        data and programs that are necessary to reproduce our results.
+        This can be an arbitrary directory on your file system that can be written.
+    </p>
+
+    <p>
+        Now you can retrieve a copy of our replication package and extract its contents to <tt>$BASE</tt>:
+        Download the <a href="https://github.com/software-analysis/spec-decomposition/releases/download/FSE16/CPAchecker-package.zip">archive (compressed: 292 MB)</a> that includes all
+        files for re-running our experiments, and extract them:
+    <p>
+<pre>
+wget http://github.com/software-analysis/spec-decomposition/releases/download/FSE16/CPAchecker-package.zip
+unzip CPAchecker-package.zip
+export BASE=`pwd`
+</pre>
+    <p>
+        The directory sub tree of <tt>$BASE</tt> should now contain, at least, following elements:
+    </p>
+<pre>
+  .
+  └── CPAchecker-package
+      ├── config
+      ├── doc
+      ├── experiments
+      │   ├── properties
+      │   ├── tasks-main0
+      │   └── tasks-main0-atleast2-rand250
+      ├── lib
+      └── scripts
+</pre>
+
+
+    <h3>Single Linux Kernel Module</h3>
+
+    <p>
+        We will now illustrate how to reproduce our results.
+        Instead of describing the process for the full set of kernel modules
+        tasks, we will discuss the process using the module
+        <tt>drivers-isdn-gigaset-bas_gigaset-ko_main0.c</tt>
+    </p>
+
+
+<pre>
+cd $BASE/CPAchecker-package
+./scripts/cpa.sh -noout -heap 10000M -skipRecursion -disable-java-assertions \
+    -mpa-alg-predicate-abelf \
+    -setprop analysis.mpa.partition.time.cpu=900s \
+    -setprop analysis.mpa.partition.operator=AllThenNoneOperator \
+    -spec ./experiments/properties/LDV_134_1a_encode.spc \
+    -spec ./experiments/properties/LDV_43_1a_encode.spc \
+    -spec ./experiments/properties/LDV_68_1a_encode.spc \
+    ./experiments/tasks-main0/drivers-isdn-gigaset-bas_gigaset-ko_main0.c
+</pre>
+
+    <p>
+        The output of the command should look similar to the following:
+    </p>
+
+<pre>
+Running CPAchecker with Java heap of size 10000M.
+Using the following resource limits: CPU-time limit of 900s (ResourceLimitChecker.fromConfiguration, INFO)
+
+CPAchecker 1.5-svn (Java HotSpot(TM) 64-Bit Server VM 1.8.0_66) started (CPAchecker.run, INFO)
+
+[...]
+
+Using predicate analysis with SMTInterpol 2.1-224-gfd408f2-comp and JFactory 1.21. (PredicateCPA:PredicateCPA.<init>, INFO)
+
+Using refinement for predicate analysis with PredicateAbstractionRefinementStrategy strategy.
+    (PredicateCPA:PredicateCPARefiner.<init>, INFO)
+
+[...]
+
+Starting analysis ... (CPAchecker.runAlgorithm, INFO)
+
+Checking 3 properties. (MultiPropertyAnalysis.run, INFO)
+
+New partitioning with 1 partitions. (MultiPropertyAnalysis.partition, WARNING)
+
+Partition 1 with 3 elements: [LDV_68_1a_encode.spc, LDV_43_1a_encode.spc,
+    LDV_134_1a_encode.spc] (MultiPropertyAnalysis.partition, WARNING)
+
+1 states in reached. (MultiPropertyAnalysis.initReached, WARNING)
+
+1 states in waitlist. (MultiPropertyAnalysis.initReached, WARNING)
+
+Waitlist with 3 active (0 inactive) properties. (MultiPropertyAnalysis.initReached, WARNING)
+
+[...]
+
+Fixpoint with 119112 states reached for: [LDV_43_1a_encode.spc, LDV_134_1a_encode.spc].
+    0 properties remain to be checked. (MultiPropertyAnalysis.run, INFO)
+
+Multi-property analysis terminated: 1 violated, 2 satisfied, 0 unknown (MultiPropertyAnalysis.run, WARNING)
+
+Stopping analysis ... (CPAchecker.runAlgorithm, INFO)
+
+Verification result: FALSE. Property violation (LDV_68_1a_encode.spc) found by chosen configuration.
+    Number of considered properties: 3
+    Number of violated properties: 1
+    Number of unknown properties: 0
+    Number of satisfied properties: 2
+    Number of relevant properties: 3
+    Status by property:
+        Property LDV_68_1a_encode.spc: FALSE
+        Property LDV_134_1a_encode.spc: TRUE
+        Property LDV_43_1a_encode.spc: TRUE
+More details about the verification run can be found in the directory "./output".
+</pre>
+
+    <h3>Characteristics of Java and the JVM</h3>
+    <p>
+        Since CPAchecker is written in Java, its performance depends on the JVM and its configuration.
+        In cases where we compare several launches of CPAchecker, or multiple launches of the same
+        code within CPAchecker, we have to consider the behaviour of the just-in-time compiler (JIT).
+        In order to reduce the effect of the JIT as much as possible,
+        we forced the JVM for some experiments to compile most of the byte code
+        already during the startup.
+        Starting CPAchecker with the argument <tt>-compile</tt> enables this behaviour
+        by configuring the JVM with the arguments <tt>-Xcomp -XX:CompileThreshold=100</tt>.
+    </p>
+
+    <h3>Different Decomposition Strategies</h3>
+
+    <p>
+        The parameter <tt>analysis.mpa.partition.operator</tt> defines the decomposition strategy.
+        In the following, we provide the configuration options for the strategies that were presented in the paper:
+    </p>
+
+<h4>Strategy S<sub>0</sub>: No Specification Decomposition</h4>
+<pre>
+analysis.mpa.partition.operator=AllThenNoneOperator
+analysis.mpa.partition.time.cpu=12600s
+</pre>
+
+<h4>Strategy S<sub>1</sub>: All Simultaneously, Remaining Separately</h4>
+<pre>
+analysis.mpa.partition.operator=AllThenSepOperator
+analysis.mpa.partition.time.cpu=900
+</pre>
+
+<h4>Strategy S<sub>2</sub>: All Simultaneously+Refinement Limit, Remaining Separately</h4>
+<pre>
+analysis.mpa.partition.operator=AllThenSepOperator
+analysis.mpa.partition.time.cpu=900
+analysis.mpa.budget.limit.refinementsTimesMore=2
+analysis.mpa.budget.limit.numRefinements=10
+</pre>
+
+<h4>Strategy S<sub>3</sub>: All Simultaneously, Irrelevant, Relevant Separately</h4>
+<pre>
+analysis.mpa.partition.operator=AllThenIrrelevanceThenRelevantSepOperator
+analysis.mpa.partition.time.cpu=900
+analysis.mpa.partition.first.time.cpu=900
+analysis.mpa.partition.second.time.cpu=900
+</pre>
+
+<h4>Strategy S<sub>4</sub>: All Simultaneously+Refinement Limit, Irrelevant, Relevant Separately</h4>
+<pre>
+analysis.mpa.partition.operator=AllThenIrrelevanceThenRelevantSepOperator
+analysis.mpa.partition.time.cpu=900
+analysis.mpa.partition.first.time.cpu=900
+analysis.mpa.partition.second.time.cpu=900
+analysis.mpa.budget.limit.refinementsTimesMore=2
+analysis.mpa.budget.limit.numRefinements=10
+</pre>
+
+
+    <h3>Running the Benchmark Suite</h3>
+    <p>
+        Our CPAchecker distribution includes a copy of <a href="https://github.com/sosy-lab/benchexec"><span class="tool">BenchExec</a>,
+        a framework for reliable benchmarking and resource measurement.
+        The script <tt>$BASE/CPAchecker-package/scripts/benchmark.py</tt> can to be started with a benchmark
+        definition file as an argument; this will start a defined set of verification runs on the local machine.
+    </p>
+    <p>
+        A benchmark definition file specifies
+        (1) which verification tool to use,
+        (2) the configurations of the tool to benchmark,
+        and the set of verification tasks, that is, (3) the set of properties to verify,
+        and (4) the set of programs to check.
+        As part of our replication package, we provide several of benchmark
+        definition files (<a href="https://github.com/software-analysis/spec-decomposition/releases/download/FSE16/bench-defs.zip">ZIP archive</a>):
+    </p>
+    <table class="raw-results">
+        <thead>
+            <tr>
+                <th>Benchmark Definition File</th>
+                <th>Purpose</th>
+                <th>Download</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><tt>bench-relevance-all.xml</tt></td>
+                <td>For each of the 4336 Linux kernel modules, identify which properties are relevant.
+                    We get the <tt>Number of relevant properties</tt> for each pair of kernel module and property,
+                    that is, the property is relevant if the value is equal to 1, and it is irrelevant if it equals 0.
+                </td>
+                <td><a href="./bench-defs/bench-relevance-all.xml">XML</a></td>
+            </tr>
+            <tr>
+                <td><tt>bench-baseline.xml</tt></td>
+                <td>Performance of traditional model checking runs where only one property gets
+                    verified in one run of the model checker.
+                </td>
+                <td><a href="./bench-defs/bench-baseline.xml">XML</a></td>
+            </tr>
+            <tr>
+                <td><tt>bench-rq1.xml</tt></td>
+                <td>Multi-property verification runs that are configured to
+                    check all properties in one partition, that is, we use the
+                    decomposition strategy S<sub>0</sub> on 250 kernel modules for that we
+                    check all 14 properties.
+                </td>
+                <td><a href="./bench-defs/bench-rq1.xml">XML</a></td>
+            </tr>
+            <tr>
+                <td><tt>bench-rq2.xml</tt></td>
+                <td>
+                    Evaluation of the decomposition strategies S<sub>1</sub> – S<sub>4</sub>
+                    on the 250 kernel modules for that we check all 14 properties.
+                </td>
+                <td><a href="./bench-defs/bench-rq2.xml">XML</a></td>
+            </tr>
+            <tr>
+                <td><tt>bench-rq3-baseline.xml</tt></td>
+                <td>Performance of traditional model checking runs where only one property gets
+                    verified in one run of the model checker;
+                     we now do NOT force the JVM to compile most of the bytecode during its startup.
+                </td>
+                <td><a href="./bench-defs/bench-rq3-baseline.xml">XML</a></td>
+            </tr>
+            <tr>
+                <td><tt>bench-rq3a.xml</tt></td>
+                <td>Experiment for that we do not force the JVM to compile most of the bytecode during its
+                    startup; on the 250 kernel modules for that we check all 14 properties.
+                </td>
+                <td>
+                    <a href="./bench-defs/bench-rq3a.xml">XML</a>
+                </td>
+            </tr>
+            <tr>
+                <td><tt>bench-rq3b.xml</tt></td>
+                <td>Experiment for that we do not force the JVM to compile most of the bytecode during its
+                    startup.
+                    To confirm our results and increase their validity, this experiment is on the larger
+                    set of verification tasks, that is, we check the 14 properties of
+                    all 4336 Linux kernel modules.</td>
+                <td><a href="./bench-defs/bench-rq3b.xml">XML</a></td>
+            </tr>
+        </tbody>
+      </table>
+
+      <p>
+      If you want to run, for example, the experiments that are defined in <tt>bench-baseline.xml</tt>, you can do
+      this by running <tt>benchmark.py</tt> with the benchmark definition file as argument:
+      </p>
+<pre>
+cd $BASE/CPAchecker-package
+./scripts/benchmark.py ./experiments/bench-baseline.xml
+</pre>
+
+    <p>
+        <strong>Before</strong> you can use CPAcheckers benchmarking infrastructure,
+        and <span class="tool">BenchExec</span>, a number of system requirements have to be satisfied:
+        <a href="https://github.com/sosy-lab/benchexec/blob/master/doc/INSTALL.md#system-requirements">BenchExec System Requirements</a>.
+        It might be sufficient to setup the local Cgroups with the following commands:
+    </p>
+<pre>
+sudo mount -t cgroup cgroup /sys/fs/cgroup
+sudo chmod o+wt,g+w /sys/fs/cgroup/
+</pre>
+
+  <p>
+    <strong>Important:</strong> The benchmarking script might complain that there is not sufficient memory installed:
+  </p>
+<pre>
+Memory banks [0] do not have enough memory for one run, only 16704045056 bytes available.
+</pre>
+
+  <p>
+      The benchmark definition files specify the requirements on the hardware; you might have to adjust them
+      on your machine(s):
+  </p>
+<pre>
+<code>&lt;benchmark tool="cpachecker" timelimit="1000" hardtimelimit="1100" <strong>memlimit="30GB" cpuCores="4"</strong>&gt;
+  &lt;option name=<strong>"-heap"&gt;26000M</strong>&lt;/option&gt;
+</code></pre>
+
+    </div>
+</body>
+</html>

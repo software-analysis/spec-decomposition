@@ -1,0 +1,350 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" >
+<head>
+<link rel="stylesheet" type="text/css" href="combined.css" />
+<link rel="stylesheet" type="text/css" href="fulltable.css" />
+<meta http-equiv="content-language" content="en" />
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<meta name="description" content="On-The-Fly Decomposition of Specifications in Software Model Checking" />
+<meta name="keywords" content="Software Model Checking Decomposition" />
+<title>On-The-Fly Decomposition of Specifications in Software Model Checking</title>
+<style type="text/css">
+pre {
+background-color: #F1F1F1;
+margin-bottom: 1em;
+padding: 1em;
+}
+.raw-results {
+font-size: 10pt;
+width: 90%;
+margin-left:auto;
+margin-right:auto;
+margin-bottom:2em;
+}
+
+.raw-results tbody tr:hover {
+background-color: #F1F1F1;
+}
+
+.raw-results thead tr {
+border-bottom:1px solid black;
+}
+
+.raw-results {
+border-bottom:3px solid black;
+}
+
+p.values {
+font-style: italic;
+}
+
+p.values span {
+color:gray;
+}
+
+col.key {
+width:15em;
+}
+
+span.mono {
+font-family:"monospace";
+}
+</style>
+</head>
+
+<body>
+  <div>
+    <h2 id="data">Multi-Property Verification</h2>
+
+    <table class="full">
+    <caption>
+A detailed comparison of checking several properties simultaneously (“Multi”) compared to checking each property in
+a separate verification run (“Single”). The table is ordered by the speedup archived by checking properties simultaneously.
+The numbers for checking each property separately represent the maximum value of one of the runs.
+    </caption>
+        <thead>
+            <tr class="h1">
+                <th></th>
+                <th></th>
+                <th colspan=2>Verified<br />Properties</th>
+                <th colspan=2>Abstraction<br />Predicates</th>
+                <th colspan=2>Refinements</th>
+                <th colspan=2>Reached<br />States</th>
+                <th colspan=2>Analysis<br />CPU Time (s)</th>
+                <th></th>
+            </tr>
+            <tr class="h2">
+                <th>Kernel Module</th>
+                <th>Relevant<br />Properties</th>
+                <th>Single</th>
+                <th>Multi</th>
+                <th>Single</th>
+                <th>Multi</th>
+                <th>Single</th>
+                <th>Multi</th>
+                <th>Single</th>
+                <th>Multi</th>
+                <th>Single</th>
+                <th>Multi</th>
+                <th>Speedup</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr><td>spi-spi-tegra20-slink.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>4&thinsp;902</td><td>4&thinsp;907</td><td>97</td><td>7.0</td><td>14</td></tr>
+          <tr><td>tty-serial-timbuart.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1&thinsp;558</td><td>1&thinsp;563</td><td>67</td><td>4.9</td><td>14</td></tr>
+          <tr><td>net-ethernet-mellanox-mlx5-core-mlx5_core.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>513&thinsp;973</td><td>513&thinsp;978</td><td>2&thinsp;300</td><td>180</td><td>13</td></tr>
+          <tr><td>staging-iio-magnetometer-hmc5843_core.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>623</td><td>628</td><td>61</td><td>4.8</td><td>13</td></tr>
+          <tr><td>input-touchscreen-mms114.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1&thinsp;333</td><td>1&thinsp;338</td><td>64</td><td>5.2</td><td>12</td></tr>
+          <tr><td>staging-comedi-drivers-amplc_pci224.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1&thinsp;696</td><td>1&thinsp;701</td><td>67</td><td>5.5</td><td>12</td></tr>
+          <tr><td>bcma-bcma.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1&thinsp;459</td><td>1&thinsp;464</td><td>61</td><td>5.0</td><td>12</td></tr>
+          <tr><td>input-touchscreen-elo.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1&thinsp;523</td><td>1&thinsp;528</td><td>66</td><td>5.5</td><td>12</td></tr>
+          <tr><td>sound-soc-codecs-snd-soc-arizona.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2&thinsp;800</td><td>2&thinsp;805</td><td>79</td><td>6.6</td><td>12</td></tr>
+          <tr><td>rtc-rtc-stk17ta8.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1&thinsp;704</td><td>1&thinsp;709</td><td>70</td><td>5.8</td><td>12</td></tr>
+          <tr><td>net-wan-hdlc.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1&thinsp;330</td><td>1&thinsp;335</td><td>61</td><td>5.1</td><td>12</td></tr>
+          <tr><td>rtc-rtc-m48t59.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2&thinsp;279</td><td>2&thinsp;284</td><td>75</td><td>6.2</td><td>12</td></tr>
+          <tr><td>usb-phy-phy-tahvo.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1&thinsp;257</td><td>1&thinsp;262</td><td>63</td><td>5.3</td><td>12</td></tr>
+          <tr><td>misc-bh1770glc.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1&thinsp;607</td><td>1&thinsp;612</td><td>69</td><td>5.8</td><td>12</td></tr>
+          <tr><td>staging-comedi-drivers-das16m1.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>855</td><td>860</td><td>62</td><td>5.2</td><td>12</td></tr>
+          <tr><td>input-gameport-gameport.c</td><td>3</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>906</td><td>911</td><td>59</td><td>5.0</td><td>12</td></tr>
+          <tr><td>mfd-tps65010.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1&thinsp;741</td><td>1&thinsp;746</td><td>69</td><td>5.8</td><td>12</td></tr>
+          <tr><td>sound-oss-uart401.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2&thinsp;321</td><td>2&thinsp;326</td><td>74</td><td>6.3</td><td>12</td></tr>
+          <tr><td>w1-masters-ds1wm.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2&thinsp;399</td><td>2&thinsp;404</td><td>74</td><td>6.3</td><td>12</td></tr>
+          <tr><td>input-touchscreen-ad7879.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>963</td><td>968</td><td>58</td><td>5.0</td><td>12</td></tr>
+          <tr><td>tty-goldfish.c</td><td>3</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1&thinsp;416</td><td>1&thinsp;421</td><td>64</td><td>5.5</td><td>12</td></tr>
+          <tr><td>staging-comedi-drivers-pcmuio.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2&thinsp;434</td><td>2&thinsp;439</td><td>69</td><td>5.9</td><td>12</td></tr>
+          <tr><td>net-appletalk-ipddp.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2&thinsp;300</td><td>2&thinsp;309</td><td>67</td><td>5.7</td><td>12</td></tr>
+          <tr><td>scsi-hv_storvsc.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3&thinsp;101</td><td>3&thinsp;106</td><td>78</td><td>6.7</td><td>12</td></tr>
+          <tr><td>md-dm-crypt.c</td><td>1</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>5&thinsp;995</td><td>6&thinsp;000</td><td>100</td><td>8.9</td><td>12</td></tr>
+          <tr><td>input-serio-sun4i-ps2.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1&thinsp;099</td><td>1&thinsp;104</td><td>59</td><td>5.1</td><td>12</td></tr>
+          <tr><td>net-netconsole.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1&thinsp;749</td><td>1&thinsp;754</td><td>63</td><td>5.5</td><td>12</td></tr>
+          <tr><td>rtc-rtc-isl12057.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1&thinsp;889</td><td>1&thinsp;894</td><td>72</td><td>6.2</td><td>12</td></tr>
+          <tr><td>net-ethernet-intel-ixgbevf-ixgbevf.c</td><td>0</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3&thinsp;814</td><td>3&thinsp;819</td><td>81</td><td>7.1</td><td>11</td></tr>
+          <tr><td>tty-serial-altera_uart.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2&thinsp;071</td><td>2&thinsp;076</td><td>73</td><td>6.4</td><td>11</td></tr>
+          <tr><td>media-platform-s5p-tv-s5p-mixer.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2&thinsp;078</td><td>2&thinsp;083</td><td>68</td><td>6.0</td><td>11</td></tr>
+          <tr><td>iio-light-apds9300.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1&thinsp;572</td><td>1&thinsp;577</td><td>65</td><td>5.7</td><td>11</td></tr>
+          <tr><td>staging-media-lirc-lirc_sir.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2&thinsp;448</td><td>2&thinsp;453</td><td>73</td><td>6.5</td><td>11</td></tr>
+          <tr><td>gpio-gpio-ml-ioh.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1&thinsp;231</td><td>1&thinsp;236</td><td>63</td><td>5.6</td><td>11</td></tr>
+          <tr><td>acpi-acpi_ipmi.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1&thinsp;985</td><td>1&thinsp;990</td><td>68</td><td>6.1</td><td>11</td></tr>
+          <tr><td>mmc-host-toshsd.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2&thinsp;917</td><td>2&thinsp;922</td><td>80</td><td>7.2</td><td>11</td></tr>
+          <tr><td>sound-usb-snd-usbmidi-lib.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>4&thinsp;847</td><td>4&thinsp;852</td><td>92</td><td>8.3</td><td>11</td></tr>
+          <tr><td>ata-sata_vsc.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1&thinsp;839</td><td>1&thinsp;844</td><td>71</td><td>6.5</td><td>11</td></tr>
+          <tr><td>net-can-sja1000-sja1000.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>4&thinsp;181</td><td>4&thinsp;186</td><td>82</td><td>7.5</td><td>11</td></tr>
+          <tr><td>sound-oss-uart6850.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1&thinsp;250</td><td>1&thinsp;255</td><td>60</td><td>5.5</td><td>11</td></tr>
+          <tr><td>tty-serial-max310x.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>4&thinsp;544</td><td>4&thinsp;549</td><td>91</td><td>8.4</td><td>11</td></tr>
+          <tr><td>media-rc-sunxi-cir.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1&thinsp;323</td><td>1&thinsp;328</td><td>60</td><td>5.5</td><td>11</td></tr>
+          <tr><td>sound-oss-pas2.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>5&thinsp;407</td><td>5&thinsp;412</td><td>85</td><td>7.8</td><td>11</td></tr>
+          <tr><td>sound-pci-hda-snd-hda-intel.c</td><td>3</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>5&thinsp;745</td><td>5&thinsp;750</td><td>100</td><td>9.4</td><td>11</td></tr>
+          <tr><td>scsi-iscsi_tcp.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2&thinsp;970</td><td>2&thinsp;975</td><td>75</td><td>6.9</td><td>11</td></tr>
+          <tr><td>memstick-core-mspro_block.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3&thinsp;836</td><td>3&thinsp;841</td><td>85</td><td>7.8</td><td>11</td></tr>
+          <tr><td>firewire-firewire-core.c</td><td>1</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1&thinsp;659</td><td>1&thinsp;664</td><td>57</td><td>5.3</td><td>11</td></tr>
+          <tr><td>rapidio-devices-tsi721_mport.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>4&thinsp;474</td><td>4&thinsp;479</td><td>89</td><td>8.3</td><td>11</td></tr>
+          <tr><td>net-wireless-iwlegacy-iwl3945.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>5&thinsp;436</td><td>5&thinsp;441</td><td>98</td><td>9.2</td><td>11</td></tr>
+          <tr><td>sound-pci-snd-intel8x0m.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3&thinsp;491</td><td>3&thinsp;496</td><td>81</td><td>7.7</td><td>11</td></tr>
+          <tr><td>sound-pci-snd-atiixp.c</td><td>3</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>6&thinsp;132</td><td>6&thinsp;137</td><td>90</td><td>8.6</td><td>11</td></tr>
+          <tr><td>sound-core-seq-snd-seq.c</td><td>3</td><td>12+2</td><td>12+2</td><td>15</td><td>16</td><td>10</td><td>11</td><td>1&thinsp;395&thinsp;205</td><td>54&thinsp;671</td><td>1&thinsp;000</td><td>97</td><td>10</td></tr>
+          <tr><td>staging-comedi-drivers-cb_pcidas.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1&thinsp;761</td><td>1&thinsp;766</td><td>69</td><td>6.7</td><td>10</td></tr>
+          <tr><td>staging-comedi-drivers-addi_apci_1500.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1&thinsp;873</td><td>1&thinsp;878</td><td>65</td><td>6.4</td><td>10</td></tr>
+          <tr><td>pcmcia-pd6729.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>5&thinsp;958</td><td>5&thinsp;963</td><td>93</td><td>9.1</td><td>10</td></tr>
+          <tr><td>sound-soc-codecs-snd-soc-wm0010.c</td><td>3</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3&thinsp;931</td><td>3&thinsp;936</td><td>86</td><td>8.4</td><td>10</td></tr>
+          <tr><td>net-nfc-nci-nci.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>11&thinsp;161</td><td>11&thinsp;166</td><td>120</td><td>12</td><td>10</td></tr>
+          <tr><td>fs-fat-vfat.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>6&thinsp;241</td><td>6&thinsp;246</td><td>110</td><td>10</td><td>10</td></tr>
+          <tr><td>char-mwave-mwave.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>10&thinsp;469</td><td>10&thinsp;474</td><td>120</td><td>11</td><td>10</td></tr>
+          <tr><td>ata-sata_nv.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>6&thinsp;222</td><td>6&thinsp;227</td><td>110</td><td>10</td><td>10</td></tr>
+          <tr><td>tty-serial-sccnxp.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3&thinsp;477</td><td>3&thinsp;482</td><td>84</td><td>8.4</td><td>10</td></tr>
+          <tr><td>sound-pci-snd-als4000.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2&thinsp;718</td><td>2&thinsp;723</td><td>76</td><td>7.7</td><td>9.8</td></tr>
+          <tr><td>scsi-wd719x.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>7&thinsp;531</td><td>7&thinsp;536</td><td>110</td><td>11</td><td>9.8</td></tr>
+          <tr><td>sound-pci-snd-atiixp-modem.c</td><td>3</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>4&thinsp;152</td><td>4&thinsp;157</td><td>84</td><td>8.6</td><td>9.8</td></tr>
+          <tr><td>media-platform-s3c-camif-s3c-camif.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2&thinsp;937</td><td>2&thinsp;942</td><td>82</td><td>8.4</td><td>9.8</td></tr>
+          <tr><td>sound-pci-snd-via82xx.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>13&thinsp;048</td><td>13&thinsp;053</td><td>110</td><td>12</td><td>9.7</td></tr>
+          <tr><td>net-wan-x25_asy.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>4&thinsp;990</td><td>4&thinsp;999</td><td>74</td><td>7.6</td><td>9.6</td></tr>
+          <tr><td>sound-snd-aloop.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>4&thinsp;742</td><td>4&thinsp;747</td><td>85</td><td>9.0</td><td>9.4</td></tr>
+          <tr><td>usb-gadget-udc-goku_udc.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>14&thinsp;203</td><td>14&thinsp;208</td><td>130</td><td>14</td><td>9.4</td></tr>
+          <tr><td>sound-pci-ice1712-snd-ice1712.c</td><td>3</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>11&thinsp;488</td><td>11&thinsp;493</td><td>140</td><td>15</td><td>9.2</td></tr>
+          <tr><td>sound-pci-snd-als300.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3&thinsp;693</td><td>3&thinsp;698</td><td>77</td><td>8.7</td><td>8.9</td></tr>
+          <tr><td>sound-pci-snd-rme32.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>13&thinsp;664</td><td>13&thinsp;669</td><td>100</td><td>12</td><td>8.6</td></tr>
+          <tr><td>i2c-busses-i2c-xiic.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>6&thinsp;347</td><td>6&thinsp;352</td><td>98</td><td>12</td><td>8.0</td></tr>
+          <tr><td>sound-pci-lola-snd-lola.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>19&thinsp;995</td><td>20&thinsp;000</td><td>150</td><td>19</td><td>7.9</td></tr>
+          <tr><td>scsi-esp_scsi.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>30&thinsp;277</td><td>30&thinsp;282</td><td>180</td><td>23</td><td>7.8</td></tr>
+          <tr><td>scsi-advansys.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>115&thinsp;267</td><td>115&thinsp;272</td><td>460</td><td>59</td><td>7.7</td></tr>
+          <tr><td>staging-comedi-drivers-s626.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>21&thinsp;421</td><td>21&thinsp;426</td><td>130</td><td>17</td><td>7.6</td></tr>
+          <tr><td>tty-serial-8250-8250.c</td><td>1</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>18&thinsp;984</td><td>18&thinsp;989</td><td>170</td><td>23</td><td>7.5</td></tr>
+          <tr><td>usb-gadget-udc-net2280.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>28&thinsp;568</td><td>28&thinsp;573</td><td>170</td><td>23</td><td>7.4</td></tr>
+          <tr><td>tty-nozomi.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>46&thinsp;440</td><td>46&thinsp;445</td><td>190</td><td>26</td><td>7.3</td></tr>
+          <tr><td>net-sunrpc-sunrpc.c</td><td>5</td><td>14</td><td>14</td><td>5</td><td>5</td><td>1</td><td>1</td><td>6&thinsp;424</td><td>4&thinsp;731</td><td>130</td><td>19</td><td>7.0</td></tr>
+          <tr><td>net-netfilter-ipset-ip_set.c</td><td>4</td><td>14</td><td>14</td><td>10</td><td>10</td><td>2</td><td>2</td><td>3&thinsp;163</td><td>1&thinsp;923</td><td>96</td><td>14</td><td>7.0</td></tr>
+          <tr><td>media-platform-s5p-g2d-s5p-g2d.c</td><td>3</td><td>14</td><td>14</td><td>2</td><td>2</td><td>1</td><td>1</td><td>2&thinsp;899</td><td>2&thinsp;904</td><td>84</td><td>13</td><td>6.6</td></tr>
+          <tr><td>mmc-host-sdhci.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>4&thinsp;341&thinsp;699</td><td>4&thinsp;341&thinsp;704</td><td>11&thinsp;000</td><td>1&thinsp;600</td><td>6.4</td></tr>
+          <tr><td>media-pci-bt8xx-bttv.c</td><td>3</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>104&thinsp;903</td><td>104&thinsp;912</td><td>610</td><td>96</td><td>6.4</td></tr>
+          <tr><td>media-platform-mx2_emmaprp.c</td><td>3</td><td>13+1</td><td>13+1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>7&thinsp;132</td><td>7&thinsp;141</td><td>88</td><td>14</td><td>6.2</td></tr>
+          <tr><td>misc-tifm_core.c</td><td>2</td><td>14</td><td>14</td><td>3</td><td>3</td><td>1</td><td>1</td><td>1&thinsp;104</td><td>1&thinsp;113</td><td>69</td><td>12</td><td>6.0</td></tr>
+          <tr><td>staging-iio-trigger-iio-trig-periodic-rtc.c</td><td>2</td><td>13+1</td><td>13+1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1&thinsp;547</td><td>1&thinsp;555</td><td>64</td><td>11</td><td>5.8</td></tr>
+          <tr><td>sound-soc-intel-sst-snd-intel-sst-core.c</td><td>3</td><td>14</td><td>14</td><td>2</td><td>2</td><td>2</td><td>2</td><td>8&thinsp;334</td><td>8&thinsp;343</td><td>96</td><td>17</td><td>5.6</td></tr>
+          <tr><td>scsi-cxgbi-cxgb4i-cxgb4i.c</td><td>2</td><td>14</td><td>14</td><td>3</td><td>3</td><td>1</td><td>1</td><td>5&thinsp;889</td><td>5&thinsp;898</td><td>83</td><td>15</td><td>5.5</td></tr>
+          <tr><td>thermal-thermal_sys.c</td><td>2</td><td>12+2</td><td>12+2</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2&thinsp;979</td><td>2&thinsp;995</td><td>77</td><td>14</td><td>5.5</td></tr>
+          <tr><td>iio-adc-xilinx-xadc.c</td><td>4</td><td>14</td><td>14</td><td>7</td><td>7</td><td>3</td><td>3</td><td>5&thinsp;754</td><td>5&thinsp;763</td><td>99</td><td>18</td><td>5.5</td></tr>
+          <tr><td>media-usb-em28xx-em28xx-v4l.c</td><td>2</td><td>14</td><td>14</td><td>2</td><td>2</td><td>2</td><td>2</td><td>10&thinsp;343</td><td>10&thinsp;348</td><td>140</td><td>25</td><td>5.4</td></tr>
+          <tr><td>iio-light-tcs3414.c</td><td>3</td><td>14</td><td>14</td><td>4</td><td>4</td><td>1</td><td>1</td><td>1&thinsp;945</td><td>1&thinsp;954</td><td>74</td><td>14</td><td>5.4</td></tr>
+          <tr><td>staging-iio-light-tsl2x7x_core.c</td><td>2</td><td>14</td><td>14</td><td>6</td><td>6</td><td>3</td><td>3</td><td>2&thinsp;083</td><td>2&thinsp;092</td><td>89</td><td>16</td><td>5.4</td></tr>
+          <tr><td>media-usb-stk1160-stk1160.c</td><td>4</td><td>14</td><td>14</td><td>29</td><td>22</td><td>13</td><td>12</td><td>2&thinsp;275</td><td>1&thinsp;549</td><td>130</td><td>24</td><td>5.4</td></tr>
+          <tr><td>net-ethernet-ec_bhf.c</td><td>2</td><td>14</td><td>14</td><td>6</td><td>6</td><td>2</td><td>2</td><td>2&thinsp;446</td><td>2&thinsp;455</td><td>80</td><td>15</td><td>5.3</td></tr>
+          <tr><td>iio-proximity-sx9500.c</td><td>3</td><td>14</td><td>14</td><td>5</td><td>5</td><td>1</td><td>1</td><td>2&thinsp;528</td><td>2&thinsp;537</td><td>75</td><td>14</td><td>5.3</td></tr>
+          <tr><td>scsi-qla1280.c</td><td>3</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>436&thinsp;071</td><td>436&thinsp;076</td><td>1&thinsp;200</td><td>220</td><td>5.2</td></tr>
+          <tr><td>video-fbdev-via-viafb.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2&thinsp;411&thinsp;082</td><td>2&thinsp;411&thinsp;087</td><td>6&thinsp;500</td><td>1&thinsp;300</td><td>5.1</td></tr>
+          <tr><td>net-netfilter-nfnetlink_queue.c</td><td>3</td><td>14</td><td>14</td><td>7</td><td>7</td><td>1</td><td>1</td><td>2&thinsp;300</td><td>2&thinsp;305</td><td>74</td><td>15</td><td>5.0</td></tr>
+          <tr><td>input-serio-serio.c</td><td>3</td><td>14</td><td>14</td><td>3</td><td>4</td><td>1</td><td>2</td><td>1&thinsp;858</td><td>1&thinsp;873</td><td>74</td><td>15</td><td>5.0</td></tr>
+          <tr><td>iio-trigger-iio-trig-interrupt.c</td><td>2</td><td>13+1</td><td>13+1</td><td>2</td><td>2</td><td>1</td><td>1</td><td>1&thinsp;229</td><td>1&thinsp;237</td><td>66</td><td>13</td><td>5.0</td></tr>
+          <tr><td>net-usb-smsc95xx.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>29&thinsp;417</td><td>29&thinsp;422</td><td>160</td><td>34</td><td>4.9</td></tr>
+          <tr><td>ide-ide-gd_mod.c</td><td>2</td><td>13+1</td><td>13+1</td><td>2</td><td>2</td><td>1</td><td>1</td><td>3&thinsp;548</td><td>3&thinsp;557</td><td>85</td><td>18</td><td>4.9</td></tr>
+          <tr><td>iio-light-gp2ap020a00f.c</td><td>2</td><td>14</td><td>14</td><td>5</td><td>5</td><td>2</td><td>2</td><td>3&thinsp;313</td><td>3&thinsp;322</td><td>79</td><td>16</td><td>4.8</td></tr>
+          <tr><td>net-ethernet-silan-sc92031.c</td><td>3</td><td>14</td><td>14</td><td>6</td><td>8</td><td>2</td><td>3</td><td>17&thinsp;424</td><td>17&thinsp;579</td><td>130</td><td>27</td><td>4.8</td></tr>
+          <tr><td>media-common-saa7146-saa7146.c</td><td>2</td><td>14</td><td>14</td><td>2</td><td>2</td><td>1</td><td>1</td><td>5&thinsp;793</td><td>5&thinsp;728</td><td>98</td><td>20</td><td>4.8</td></tr>
+          <tr><td>net-ethernet-realtek-r8169.c</td><td>0</td><td>14</td><td>14</td><td>6</td><td>6</td><td>3</td><td>3</td><td>69&thinsp;839</td><td>69&thinsp;848</td><td>350</td><td>74</td><td>4.7</td></tr>
+          <tr><td>ipack-carriers-tpci200.c</td><td>4</td><td>14</td><td>14</td><td>8</td><td>9</td><td>2</td><td>3</td><td>1&thinsp;692</td><td>1&thinsp;697</td><td>85</td><td>18</td><td>4.7</td></tr>
+          <tr><td>xen-xen-acpi-processor.c</td><td>2</td><td>13+1</td><td>13+1</td><td>16</td><td>16</td><td>3</td><td>3</td><td>8&thinsp;964</td><td>8&thinsp;973</td><td>96</td><td>22</td><td>4.3</td></tr>
+          <tr><td>net-ethernet-realtek-8139too.c</td><td>3</td><td>14</td><td>14</td><td>12</td><td>12</td><td>8</td><td>8</td><td>7&thinsp;299</td><td>7&thinsp;308</td><td>110</td><td>26</td><td>4.3</td></tr>
+          <tr><td>net-wireless-ray_cs.c</td><td>2</td><td>14</td><td>14</td><td>11</td><td>13</td><td>6</td><td>9</td><td>29&thinsp;759</td><td>30&thinsp;171</td><td>180</td><td>42</td><td>4.2</td></tr>
+          <tr><td>net-l2tp-l2tp_ip6.c</td><td>2</td><td>14</td><td>14</td><td>7</td><td>8</td><td>1</td><td>2</td><td>3&thinsp;427</td><td>3&thinsp;435</td><td>95</td><td>22</td><td>4.2</td></tr>
+          <tr><td>watchdog-dw_wdt.c</td><td>2</td><td>13+1</td><td>13+1</td><td>3</td><td>3</td><td>1</td><td>1</td><td>4&thinsp;795</td><td>4&thinsp;803</td><td>71</td><td>17</td><td>4.2</td></tr>
+          <tr><td>net-wireless-adm8211.c</td><td>2</td><td>14</td><td>14</td><td>2</td><td>2</td><td>1</td><td>1</td><td>32&thinsp;299</td><td>32&thinsp;308</td><td>160</td><td>37</td><td>4.2</td></tr>
+          <tr><td>net-netfilter-nfnetlink_log.c</td><td>2</td><td>13+1</td><td>13+1</td><td>19</td><td>19</td><td>2</td><td>2</td><td>3&thinsp;098</td><td>2&thinsp;796</td><td>84</td><td>20</td><td>4.2</td></tr>
+          <tr><td>usb-gadget-function-u_serial.c</td><td>2</td><td>14</td><td>14</td><td>9</td><td>9</td><td>3</td><td>3</td><td>6&thinsp;061</td><td>6&thinsp;070</td><td>94</td><td>23</td><td>4.1</td></tr>
+          <tr><td>net-dccp-dccp_ipv6.c</td><td>2</td><td>14</td><td>14</td><td>6</td><td>6</td><td>4</td><td>4</td><td>26&thinsp;218</td><td>26&thinsp;227</td><td>120</td><td>30</td><td>4.1</td></tr>
+          <tr><td>block-nbd.c</td><td>2</td><td>14</td><td>14</td><td>20</td><td>20</td><td>9</td><td>9</td><td>5&thinsp;078</td><td>4&thinsp;938</td><td>100</td><td>25</td><td>4.1</td></tr>
+          <tr><td>net-ethernet-micrel-ks8851_mll.c</td><td>4</td><td>14</td><td>14</td><td>6</td><td>7</td><td>3</td><td>5</td><td>7&thinsp;773</td><td>7&thinsp;877</td><td>100</td><td>25</td><td>4.0</td></tr>
+          <tr><td>bluetooth-dtl1_cs.c</td><td>2</td><td>14</td><td>14</td><td>7</td><td>7</td><td>1</td><td>1</td><td>4&thinsp;703</td><td>11&thinsp;980</td><td>83</td><td>21</td><td>4.0</td></tr>
+          <tr><td>usb-misc-appledisplay.c</td><td>4</td><td>12+2</td><td>12+2</td><td>6</td><td>11</td><td>6</td><td>7</td><td>5&thinsp;681</td><td>8&thinsp;126</td><td>100</td><td>26</td><td>3.9</td></tr>
+          <tr><td>arch-x86-kernel-msr.c</td><td>3</td><td>14</td><td>14</td><td>60</td><td>61</td><td>12</td><td>14</td><td>2&thinsp;982</td><td>3&thinsp;467</td><td>90</td><td>23</td><td>3.9</td></tr>
+          <tr><td>net-ipv6-sit.c</td><td>3</td><td>14</td><td>14</td><td>22</td><td>28</td><td>6</td><td>7</td><td>17&thinsp;353</td><td>28&thinsp;385</td><td>140</td><td>37</td><td>3.9</td></tr>
+          <tr><td>net-ipv4-netfilter-ip_tables.c</td><td>2</td><td>12+2</td><td>12+2</td><td>10</td><td>11</td><td>3</td><td>4</td><td>29&thinsp;679</td><td>37&thinsp;626</td><td>150</td><td>40</td><td>3.8</td></tr>
+          <tr><td>nfc-st21nfca-st21nfca_i2c.c</td><td>2</td><td>13+1</td><td>13+1</td><td>10</td><td>10</td><td>4</td><td>4</td><td>4&thinsp;492</td><td>4&thinsp;501</td><td>81</td><td>22</td><td>3.8</td></tr>
+          <tr><td>fs-coda-coda.c</td><td>3</td><td>14</td><td>14</td><td>40</td><td>40</td><td>17</td><td>17</td><td>3&thinsp;588</td><td>3&thinsp;715</td><td>92</td><td>25</td><td>3.7</td></tr>
+          <tr><td>char-xillybus-xillybus_core.c</td><td>4</td><td>13+1</td><td>13+1</td><td>19</td><td>20</td><td>3</td><td>4</td><td>15&thinsp;406</td><td>13&thinsp;982</td><td>120</td><td>33</td><td>3.7</td></tr>
+          <tr><td>ide-ide-cd_mod.c</td><td>2</td><td>13+1</td><td>13+1</td><td>7</td><td>8</td><td>1</td><td>2</td><td>14&thinsp;973</td><td>14&thinsp;982</td><td>120</td><td>34</td><td>3.7</td></tr>
+          <tr><td>char-pcmcia-cm4040_cs.c</td><td>2</td><td>14</td><td>14</td><td>30</td><td>29</td><td>6</td><td>6</td><td>5&thinsp;107</td><td>5&thinsp;116</td><td>110</td><td>30</td><td>3.6</td></tr>
+          <tr><td>infiniband-core-rdma_cm.c</td><td>2</td><td>13+1</td><td>13+1</td><td>61</td><td>61</td><td>10</td><td>10</td><td>21&thinsp;195</td><td>21&thinsp;204</td><td>130</td><td>38</td><td>3.5</td></tr>
+          <tr><td>net-ppp-ppp_synctty.c</td><td>2</td><td>14</td><td>14</td><td>7</td><td>8</td><td>5</td><td>7</td><td>5&thinsp;464</td><td>5&thinsp;493</td><td>98</td><td>28</td><td>3.5</td></tr>
+          <tr><td>net-wireless-orinoco-orinoco.c</td><td>0</td><td>14</td><td>14</td><td>3</td><td>3</td><td>2</td><td>2</td><td>32&thinsp;348</td><td>32&thinsp;357</td><td>140</td><td>40</td><td>3.5</td></tr>
+          <tr><td>usb-host-fotg210-hcd.c</td><td>3</td><td>14</td><td>14</td><td>15</td><td>15</td><td>4</td><td>4</td><td>329&thinsp;483</td><td>329&thinsp;492</td><td>640</td><td>190</td><td>3.4</td></tr>
+          <tr><td>hid-hid-picolcd.c</td><td>2</td><td>14</td><td>14</td><td>2</td><td>2</td><td>1</td><td>1</td><td>36&thinsp;796</td><td>36&thinsp;805</td><td>130</td><td>40</td><td>3.4</td></tr>
+          <tr><td>misc-hpilo.c</td><td>3</td><td>14</td><td>14</td><td>22</td><td>21</td><td>7</td><td>7</td><td>3&thinsp;561</td><td>3&thinsp;612</td><td>97</td><td>29</td><td>3.3</td></tr>
+          <tr><td>char-tlclk.c</td><td>4</td><td>14</td><td>14</td><td>27</td><td>27</td><td>11</td><td>11</td><td>2&thinsp;248</td><td>2&thinsp;274</td><td>88</td><td>27</td><td>3.3</td></tr>
+          <tr><td>staging-dgap-dgap.c</td><td>3</td><td>14</td><td>14</td><td>40</td><td>40</td><td>11</td><td>11</td><td>66&thinsp;220</td><td>66&thinsp;141</td><td>360</td><td>110</td><td>3.3</td></tr>
+          <tr><td>net-ethernet-amd-nmclan_cs.c</td><td>3</td><td>14</td><td>14</td><td>9</td><td>13</td><td>5</td><td>7</td><td>12&thinsp;884</td><td>15&thinsp;068</td><td>110</td><td>34</td><td>3.2</td></tr>
+          <tr><td>net-wireless-ath-ath10k-ath10k_pci.c</td><td>2</td><td>14</td><td>14</td><td>3</td><td>3</td><td>2</td><td>2</td><td>87&thinsp;275</td><td>87&thinsp;284</td><td>230</td><td>70</td><td>3.2</td></tr>
+          <tr><td>net-ethernet-realtek-8139cp.c</td><td>3</td><td>14</td><td>14</td><td>10</td><td>13</td><td>6</td><td>9</td><td>39&thinsp;093</td><td>41&thinsp;429</td><td>170</td><td>52</td><td>3.2</td></tr>
+          <tr><td>staging-iio-accel-lis3l02dq.c</td><td>2</td><td>13+1</td><td>13+1</td><td>8</td><td>8</td><td>7</td><td>7</td><td>9&thinsp;792</td><td>9&thinsp;801</td><td>93</td><td>29</td><td>3.2</td></tr>
+          <tr><td>net-ethernet-smsc-epic100.c</td><td>3</td><td>14</td><td>14</td><td>7</td><td>8</td><td>4</td><td>6</td><td>19&thinsp;787</td><td>20&thinsp;138</td><td>140</td><td>44</td><td>3.1</td></tr>
+          <tr><td>net-can-can.c</td><td>4</td><td>14</td><td>14</td><td>23</td><td>28</td><td>7</td><td>8</td><td>4&thinsp;152</td><td>4&thinsp;188</td><td>93</td><td>30</td><td>3.1</td></tr>
+          <tr><td>media-usb-dvb-usb-dvb-usb-cxusb.c</td><td>2</td><td>13+1</td><td>13+1</td><td>8</td><td>9</td><td>4</td><td>7</td><td>44&thinsp;187</td><td>44&thinsp;195</td><td>150</td><td>48</td><td>3.1</td></tr>
+          <tr><td>bluetooth-bluecard_cs.c</td><td>2</td><td>14</td><td>14</td><td>7</td><td>7</td><td>1</td><td>1</td><td>13&thinsp;243</td><td>37&thinsp;890</td><td>110</td><td>36</td><td>3.0</td></tr>
+          <tr><td>staging-lustre-lustre-mgc-mgc.c</td><td>2</td><td>14</td><td>14</td><td>7</td><td>7</td><td>4</td><td>4</td><td>107&thinsp;738</td><td>107&thinsp;747</td><td>290</td><td>96</td><td>3.0</td></tr>
+          <tr><td>sound-core-snd.c</td><td>3</td><td>13+1</td><td>13+1</td><td>22</td><td>28</td><td>19</td><td>21</td><td>13&thinsp;336</td><td>12&thinsp;130</td><td>150</td><td>49</td><td>3.0</td></tr>
+          <tr><td>net-ethernet-tehuti-tehuti.c</td><td>3</td><td>14</td><td>14</td><td>11</td><td>14</td><td>7</td><td>11</td><td>59&thinsp;115</td><td>59&thinsp;385</td><td>220</td><td>75</td><td>3.0</td></tr>
+          <tr><td>media-rc-ati_remote.c</td><td>3</td><td>12+2</td><td>12+2</td><td>18</td><td>20</td><td>8</td><td>9</td><td>7&thinsp;906</td><td>16&thinsp;807</td><td>100</td><td>35</td><td>3.0</td></tr>
+          <tr><td>message-fusion-mptsas.c</td><td>2</td><td>13+1</td><td>13+1</td><td>3</td><td>4</td><td>2</td><td>3</td><td>38&thinsp;671</td><td>88&thinsp;019</td><td>170</td><td>59</td><td>2.9</td></tr>
+          <tr><td>net-l2tp-l2tp_eth.c</td><td>4</td><td>14</td><td>14</td><td>9</td><td>17</td><td>1</td><td>3</td><td>3&thinsp;062</td><td>2&thinsp;768</td><td>79</td><td>27</td><td>2.9</td></tr>
+          <tr><td>crypto-af_alg.c</td><td>2</td><td>13+1</td><td>13+1</td><td>49</td><td>50</td><td>7</td><td>7</td><td>4&thinsp;599</td><td>4&thinsp;607</td><td>83</td><td>28</td><td>2.9</td></tr>
+          <tr><td>net-usb-cdc-phonet.c</td><td>3</td><td>13+1</td><td>13+1</td><td>19</td><td>26</td><td>7</td><td>12</td><td>6&thinsp;813</td><td>9&thinsp;571</td><td>99</td><td>34</td><td>2.9</td></tr>
+          <tr><td>net-can-softing-softing.c</td><td>3</td><td>14</td><td>14</td><td>4</td><td>4</td><td>4</td><td>4</td><td>16&thinsp;727</td><td>16&thinsp;736</td><td>140</td><td>49</td><td>2.9</td></tr>
+          <tr><td>net-netfilter-nfnetlink.c</td><td>2</td><td>14</td><td>14</td><td>19</td><td>19</td><td>21</td><td>21</td><td>2&thinsp;463</td><td>2&thinsp;468</td><td>94</td><td>33</td><td>2.9</td></tr>
+          <tr><td>usb-misc-uss720.c</td><td>5</td><td>12+2</td><td>12+2</td><td>6</td><td>9</td><td>2</td><td>5</td><td>26&thinsp;407</td><td>54&thinsp;180</td><td>130</td><td>47</td><td>2.8</td></tr>
+          <tr><td>media-pci-smipcie-smipcie.c</td><td>2</td><td>13+1</td><td>13+1</td><td>20</td><td>20</td><td>8</td><td>8</td><td>51&thinsp;243</td><td>51&thinsp;251</td><td>140</td><td>50</td><td>2.7</td></tr>
+          <tr><td>net-ethernet-dnet.c</td><td>3</td><td>14</td><td>14</td><td>51</td><td>51</td><td>39</td><td>39</td><td>4&thinsp;405</td><td>4&thinsp;414</td><td>100</td><td>38</td><td>2.7</td></tr>
+          <tr><td>net-ethernet-dec-tulip-de2104x.c</td><td>3</td><td>14</td><td>14</td><td>26</td><td>30</td><td>27</td><td>29</td><td>28&thinsp;848</td><td>34&thinsp;012</td><td>170</td><td>63</td><td>2.6</td></tr>
+          <tr><td>net-ethernet-fujitsu-fmvj18x_cs.c</td><td>2</td><td>14</td><td>14</td><td>26</td><td>27</td><td>11</td><td>13</td><td>11&thinsp;603</td><td>12&thinsp;776</td><td>120</td><td>44</td><td>2.6</td></tr>
+          <tr><td>scsi-mvumi.c</td><td>4</td><td>14</td><td>14</td><td>3</td><td>3</td><td>2</td><td>2</td><td>45&thinsp;615</td><td>110&thinsp;226</td><td>200</td><td>80</td><td>2.5</td></tr>
+          <tr><td>misc-phantom.c</td><td>4</td><td>13+1</td><td>13+1</td><td>22</td><td>21</td><td>8</td><td>8</td><td>7&thinsp;101</td><td>5&thinsp;098</td><td>100</td><td>42</td><td>2.5</td></tr>
+          <tr><td>watchdog-w83977f_wdt.c</td><td>2</td><td>13+1</td><td>13+1</td><td>5</td><td>5</td><td>4</td><td>4</td><td>16&thinsp;630</td><td>16&thinsp;638</td><td>100</td><td>41</td><td>2.5</td></tr>
+          <tr><td>staging-iio-meter-ade7758.c</td><td>2</td><td>13+1</td><td>13+1</td><td>14</td><td>14</td><td>10</td><td>10</td><td>3&thinsp;485</td><td>3&thinsp;493</td><td>98</td><td>42</td><td>2.4</td></tr>
+          <tr><td>scsi-initio.c</td><td>2</td><td>14</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3&thinsp;680&thinsp;120</td><td>3&thinsp;680&thinsp;129</td><td>3&thinsp;600</td><td>1&thinsp;500</td><td>2.4</td></tr>
+          <tr><td>net-ethernet-xircom-xirc2ps_cs.c</td><td>2</td><td>14</td><td>14</td><td>8</td><td>9</td><td>5</td><td>8</td><td>65&thinsp;463</td><td>68&thinsp;960</td><td>210</td><td>91</td><td>2.4</td></tr>
+          <tr><td>isdn-hardware-mISDN-w6692.c</td><td>3</td><td>14</td><td>14</td><td>3</td><td>3</td><td>1</td><td>1</td><td>78&thinsp;961</td><td>172&thinsp;664</td><td>200</td><td>84</td><td>2.3</td></tr>
+          <tr><td>net-wan-sbni.c</td><td>2</td><td>14</td><td>14</td><td>2</td><td>2</td><td>1</td><td>1</td><td>20&thinsp;021</td><td>73&thinsp;954</td><td>120</td><td>53</td><td>2.3</td></tr>
+          <tr><td>net-ethernet-3com-3c589_cs.c</td><td>3</td><td>14</td><td>14</td><td>13</td><td>14</td><td>10</td><td>14</td><td>16&thinsp;619</td><td>49&thinsp;701</td><td>120</td><td>55</td><td>2.3</td></tr>
+          <tr><td>net-decnet-decnet.c</td><td>2</td><td>13+1</td><td>13+1</td><td>40</td><td>41</td><td>17</td><td>18</td><td>989&thinsp;205</td><td>718&thinsp;883</td><td>1&thinsp;900</td><td>830</td><td>2.3</td></tr>
+          <tr><td>staging-media-lirc-lirc_sasem.c</td><td>3</td><td>11+3</td><td>11+3</td><td>16</td><td>16</td><td>10</td><td>10</td><td>14&thinsp;951</td><td>30&thinsp;314</td><td>120</td><td>52</td><td>2.2</td></tr>
+          <tr><td>block-nvme.c</td><td>3</td><td>13+1</td><td>13+1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>438&thinsp;309</td><td>438&thinsp;396</td><td>410</td><td>180</td><td>2.2</td></tr>
+          <tr><td>watchdog-pc87413_wdt.c</td><td>2</td><td>13+1</td><td>13+1</td><td>4</td><td>4</td><td>3</td><td>3</td><td>11&thinsp;518</td><td>11&thinsp;526</td><td>83</td><td>38</td><td>2.2</td></tr>
+          <tr><td>net-usb-usbnet.c</td><td>4</td><td>13+1</td><td>13+1</td><td>3</td><td>5</td><td>2</td><td>3</td><td>21&thinsp;305</td><td>43&thinsp;540</td><td>120</td><td>56</td><td>2.2</td></tr>
+          <tr><td>scsi-ch.c</td><td>3</td><td>14</td><td>14</td><td>35</td><td>34</td><td>8</td><td>8</td><td>6&thinsp;690</td><td>6&thinsp;699</td><td>120</td><td>57</td><td>2.1</td></tr>
+          <tr><td>staging-lustre-lustre-lmv-lmv.c</td><td>2</td><td>14</td><td>14</td><td>71</td><td>71</td><td>22</td><td>22</td><td>109&thinsp;696</td><td>109&thinsp;705</td><td>670</td><td>330</td><td>2.1</td></tr>
+          <tr><td>usb-host-hwa-hc.c</td><td>2</td><td>14</td><td>14</td><td>17</td><td>17</td><td>22</td><td>22</td><td>5&thinsp;462</td><td>5&thinsp;470</td><td>86</td><td>43</td><td>2.0</td></tr>
+          <tr><td>net-ieee802154-ieee802154_socket.c</td><td>3</td><td>14</td><td>14</td><td>11</td><td>14</td><td>4</td><td>9</td><td>9&thinsp;222</td><td>9&thinsp;287</td><td>130</td><td>66</td><td>2.0</td></tr>
+          <tr><td>input-mousedev.c</td><td>3</td><td>13+1</td><td>13+1</td><td>16</td><td>23</td><td>5</td><td>7</td><td>13&thinsp;690</td><td>19&thinsp;404</td><td>120</td><td>63</td><td>2.0</td></tr>
+          <tr><td>kernel-locking-locktorture.c</td><td>3</td><td>11+3</td><td>11+3</td><td>4</td><td>4</td><td>3</td><td>3</td><td>16&thinsp;177</td><td>96&thinsp;318</td><td>130</td><td>69</td><td>1.9</td></tr>
+          <tr><td>net-wireless-p54-p54usb.c</td><td>3</td><td>13+1</td><td>13+1</td><td>23</td><td>26</td><td>18</td><td>19</td><td>9&thinsp;060</td><td>9&thinsp;388</td><td>93</td><td>52</td><td>1.8</td></tr>
+          <tr><td>atm-iphase.c</td><td>2</td><td>14</td><td>14</td><td>2</td><td>2</td><td>1</td><td>1</td><td>69&thinsp;418</td><td>274&thinsp;642</td><td>220</td><td>120</td><td>1.8</td></tr>
+          <tr><td>scsi-ips.c</td><td>1</td><td>14</td><td>14</td><td>5</td><td>5</td><td>2</td><td>2</td><td>143&thinsp;424</td><td>3&thinsp;419</td><td>620</td><td>360</td><td>1.7</td></tr>
+          <tr><td>sound-core-snd-timer.c</td><td>3</td><td>12+2</td><td>12+2</td><td>26</td><td>30</td><td>21</td><td>20</td><td>52&thinsp;486</td><td>73&thinsp;490</td><td>220</td><td>130</td><td>1.7</td></tr>
+          <tr><td>media-usb-stkwebcam-stkwebcam.c</td><td>3</td><td>13+1</td><td>13+1</td><td>3</td><td>5</td><td>2</td><td>4</td><td>38&thinsp;455</td><td>70&thinsp;159</td><td>160</td><td>100</td><td>1.5</td></tr>
+          <tr><td>fs-hfsplus-hfsplus.c</td><td>2</td><td>13+1</td><td>13+1</td><td>5</td><td>5</td><td>11</td><td>11</td><td>1&thinsp;981&thinsp;437</td><td>2&thinsp;029&thinsp;849</td><td>2&thinsp;100</td><td>1&thinsp;400</td><td>1.5</td></tr>
+          <tr><td>net-ethernet-amd-amd8111e.c</td><td>3</td><td>14</td><td>14</td><td>7</td><td>9</td><td>4</td><td>6</td><td>127&thinsp;617</td><td>128&thinsp;202</td><td>240</td><td>160</td><td>1.5</td></tr>
+          <tr><td>infiniband-hw-ocrdma-ocrdma.c</td><td>4</td><td>13+1</td><td>13+1</td><td>30</td><td>46</td><td>19</td><td>24</td><td>196&thinsp;463</td><td>207&thinsp;962</td><td>370</td><td>260</td><td>1.5</td></tr>
+          <tr><td>fs-f2fs-f2fs.c</td><td>4</td><td>13</td><td>14</td><td>45</td><td>62</td><td>59</td><td>61</td><td>-</td><td>92&thinsp;022</td><td>1&thinsp;800</td><td>1&thinsp;300</td><td>-</td></tr>
+          <tr><td>net-atm-br2684.c</td><td>4</td><td>13+1</td><td>13+1</td><td>6</td><td>8</td><td>4</td><td>9</td><td>8&thinsp;379</td><td>13&thinsp;843</td><td>99</td><td>70</td><td>1.4</td></tr>
+          <tr><td>net-wireless-ath-ath6kl-ath6kl_usb.c</td><td>3</td><td>14</td><td>14</td><td>25</td><td>38</td><td>57</td><td>64</td><td>24&thinsp;013</td><td>24&thinsp;337</td><td>220</td><td>160</td><td>1.4</td></tr>
+          <tr><td>staging-media-lirc-lirc_imon.c</td><td>3</td><td>11+3</td><td>11+3</td><td>29</td><td>29</td><td>27</td><td>32</td><td>10&thinsp;544</td><td>23&thinsp;404</td><td>150</td><td>110</td><td>1.3</td></tr>
+          <tr><td>sound-core-seq-oss-snd-seq-oss.c</td><td>3</td><td>13+1</td><td>13+1</td><td>22</td><td>22</td><td>15</td><td>15</td><td>186&thinsp;906</td><td>186&thinsp;914</td><td>300</td><td>240</td><td>1.3</td></tr>
+          <tr><td>block-mtip32xx-mtip32xx.c</td><td>4</td><td>13+1</td><td>13+1</td><td>28</td><td>28</td><td>10</td><td>10</td><td>234&thinsp;948</td><td>402&thinsp;114</td><td>370</td><td>300</td><td>1.2</td></tr>
+          <tr><td>net-ethernet-neterion-s2io.c</td><td>3</td><td>14</td><td>14</td><td>14</td><td>21</td><td>19</td><td>26</td><td>456&thinsp;745</td><td>460&thinsp;013</td><td>990</td><td>820</td><td>1.2</td></tr>
+          <tr><td>media-usb-usbtv-usbtv.c</td><td>4</td><td>11+3</td><td>11+3</td><td>30</td><td>62</td><td>22</td><td>23</td><td>9&thinsp;559</td><td>23&thinsp;130</td><td>120</td><td>100</td><td>1.2</td></tr>
+          <tr><td>net-wireless-ath-carl9170-carl9170.c</td><td>5</td><td>12+2</td><td>12+2</td><td>22</td><td>36</td><td>17</td><td>30</td><td>841&thinsp;470</td><td>4&thinsp;521&thinsp;444</td><td>2&thinsp;600</td><td>2&thinsp;200</td><td>1.2</td></tr>
+          <tr><td>usb-core-usbcore.c</td><td>8</td><td>1+1</td><td>0+1</td><td>87</td><td>139</td><td>23</td><td>37</td><td>-</td><td>-</td><td>12&thinsp;000</td><td>13&thinsp;000</td><td>-</td></tr>
+          <tr><td>net-irda-sir-dev.c</td><td>3</td><td>13+1</td><td>13+1</td><td>40</td><td>40</td><td>36</td><td>36</td><td>29&thinsp;501</td><td>29&thinsp;509</td><td>140</td><td>150</td><td>.95</td></tr>
+          <tr><td>fs-nilfs2-nilfs2.c</td><td>3</td><td>0+1</td><td>0+1</td><td>96</td><td>96</td><td>113</td><td>113</td><td>-</td><td>-</td><td>13&thinsp;000</td><td>13&thinsp;000</td><td>.95</td></tr>
+          <tr><td>ata-libata.c</td><td>2</td><td>0+1</td><td>0+1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>-</td><td>-</td><td>13&thinsp;000</td><td>13&thinsp;000</td><td>.94</td></tr>
+          <tr><td>scsi-gdth.c</td><td>4</td><td>0</td><td>0</td><td>8</td><td>8</td><td>5</td><td>6</td><td>-</td><td>-</td><td>13&thinsp;000</td><td>13&thinsp;000</td><td>.94</td></tr>
+          <tr><td>net-ethernet-intel-e1000-e1000.c</td><td>3</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>-</td><td>-</td><td>13&thinsp;000</td><td>14&thinsp;000</td><td>.93</td></tr>
+          <tr><td>net-wireless-b43legacy-b43legacy.c</td><td>3</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>-</td><td>-</td><td>13&thinsp;000</td><td>14&thinsp;000</td><td>.93</td></tr>
+          <tr><td>net-ethernet-intel-e100.c</td><td>3</td><td>14</td><td>14</td><td>56</td><td>56</td><td>106</td><td>106</td><td>204&thinsp;255</td><td>209&thinsp;951</td><td>1&thinsp;100</td><td>1&thinsp;300</td><td>.81</td></tr>
+          <tr><td>net-atm-lec.c</td><td>3</td><td>12+2</td><td>12+2</td><td>17</td><td>30</td><td>16</td><td>43</td><td>52&thinsp;569</td><td>344&thinsp;853</td><td>180</td><td>230</td><td>.78</td></tr>
+          <tr><td>net-hyperv-hv_netvsc.c</td><td>2</td><td>14</td><td>14</td><td>34</td><td>34</td><td>84</td><td>84</td><td>100&thinsp;790</td><td>100&thinsp;799</td><td>490</td><td>640</td><td>.77</td></tr>
+          <tr><td>net-netfilter-nf_conntrack_netlink.c</td><td>1</td><td>14</td><td>14</td><td>25</td><td>25</td><td>20</td><td>20</td><td>33&thinsp;164</td><td>33&thinsp;169</td><td>510</td><td>710</td><td>.72</td></tr>
+          <tr><td>net-wireless-orinoco-orinoco_usb.c</td><td>3</td><td>12+2</td><td>12+2</td><td>42</td><td>43</td><td>18</td><td>22</td><td>374&thinsp;386</td><td>993&thinsp;899</td><td>300</td><td>450</td><td>.68</td></tr>
+          <tr><td>watchdog-f71808e_wdt.c</td><td>2</td><td>13+1</td><td>13+1</td><td>37</td><td>37</td><td>20</td><td>20</td><td>385&thinsp;794</td><td>385&thinsp;802</td><td>580</td><td>860</td><td>.67</td></tr>
+          <tr><td>mfd-rtsx_usb.c</td><td>2</td><td>13+1</td><td>13+1</td><td>25</td><td>30</td><td>39</td><td>50</td><td>24&thinsp;996</td><td>8&thinsp;690</td><td>200</td><td>320</td><td>.64</td></tr>
+          <tr><td>net-wireless-libertas_tf-libertas_tf_usb.c</td><td>2</td><td>13+1</td><td>13+1</td><td>12</td><td>18</td><td>22</td><td>29</td><td>14&thinsp;321</td><td>31&thinsp;714</td><td>130</td><td>200</td><td>.63</td></tr>
+          <tr><td>net-ethernet-intel-igb-igb.c</td><td>4</td><td>11</td><td>0</td><td>13</td><td>33</td><td>19</td><td>49</td><td>-</td><td>-</td><td>7&thinsp;500</td><td>13&thinsp;000</td><td>-</td></tr>
+          <tr><td>input-misc-uinput.c</td><td>2</td><td>14</td><td>14</td><td>16</td><td>16</td><td>67</td><td>67</td><td>18&thinsp;183</td><td>18&thinsp;192</td><td>210</td><td>360</td><td>.57</td></tr>
+          <tr><td>block-paride-pg.c</td><td>2</td><td>14</td><td>14</td><td>99</td><td>99</td><td>106</td><td>106</td><td>73&thinsp;687</td><td>73&thinsp;696</td><td>300</td><td>540</td><td>.55</td></tr>
+          <tr><td>scsi-st.c</td><td>4</td><td>11+1</td><td>0+1</td><td>12</td><td>18</td><td>5</td><td>10</td><td>-</td><td>-</td><td>7&thinsp;500</td><td>14&thinsp;000</td><td>-</td></tr>
+          <tr><td>net-ethernet-3com-3c59x.c</td><td>3</td><td>14</td><td>14</td><td>14</td><td>17</td><td>12</td><td>17</td><td>1&thinsp;057&thinsp;978</td><td>2&thinsp;320&thinsp;312</td><td>860</td><td>1&thinsp;600</td><td>.55</td></tr>
+          <tr><td>net-wireless-hostap-hostap_cs.c</td><td>2</td><td>13</td><td>14</td><td>25</td><td>43</td><td>24</td><td>39</td><td>-</td><td>498&thinsp;799</td><td>1&thinsp;800</td><td>3&thinsp;200</td><td>-</td></tr>
+          <tr><td>net-bridge-bridge.c</td><td>3</td><td>14</td><td>14</td><td>39</td><td>50</td><td>53</td><td>83</td><td>1&thinsp;348&thinsp;445</td><td>5&thinsp;621&thinsp;749</td><td>1&thinsp;700</td><td>3&thinsp;300</td><td>.50</td></tr>
+          <tr><td>net-ethernet-sun-cassini.c</td><td>4</td><td>14</td><td>14</td><td>21</td><td>33</td><td>15</td><td>32</td><td>542&thinsp;611</td><td>1&thinsp;371&thinsp;933</td><td>570</td><td>1&thinsp;200</td><td>.49</td></tr>
+          <tr><td>net-can-usb-usb_8dev.c</td><td>3</td><td>13+1</td><td>13+1</td><td>18</td><td>34</td><td>11</td><td>18</td><td>5&thinsp;780</td><td>9&thinsp;103</td><td>110</td><td>240</td><td>.45</td></tr>
+          <tr><td>usb-misc-iowarrior.c</td><td>3</td><td>11+3</td><td>11+3</td><td>21</td><td>28</td><td>54</td><td>64</td><td>64&thinsp;178</td><td>92&thinsp;701</td><td>210</td><td>490</td><td>.42</td></tr>
+          <tr><td>media-pci-bt8xx-dst_ca.c</td><td>2</td><td>12+2</td><td>12+2</td><td>5</td><td>5</td><td>49</td><td>35</td><td>47&thinsp;837</td><td>79&thinsp;343</td><td>190</td><td>500</td><td>.38</td></tr>
+          <tr><td>input-mouse-synaptics_usb.c</td><td>3</td><td>13+1</td><td>13+1</td><td>108</td><td>127</td><td>45</td><td>57</td><td>9&thinsp;982</td><td>3&thinsp;978</td><td>210</td><td>550</td><td>.38</td></tr>
+          <tr><td>nfc-pn533.c</td><td>3</td><td>12+2</td><td>12+2</td><td>66</td><td>73</td><td>45</td><td>48</td><td>178&thinsp;912</td><td>338&thinsp;432</td><td>340</td><td>940</td><td>.36</td></tr>
+          <tr><td>net-can-usb-kvaser_usb.c</td><td>2</td><td>13+1</td><td>13+1</td><td>17</td><td>43</td><td>10</td><td>30</td><td>10&thinsp;457</td><td>23&thinsp;262</td><td>120</td><td>370</td><td>.32</td></tr>
+          <tr><td>media-usb-b2c2-b2c2-flexcop-usb.c</td><td>2</td><td>12+2</td><td>12+2</td><td>28</td><td>48</td><td>39</td><td>59</td><td>10&thinsp;529</td><td>84&thinsp;384</td><td>110</td><td>380</td><td>.28</td></tr>
+          <tr><td>net-wireless-libertas-libertas.c</td><td>2</td><td>13</td><td>0</td><td>3</td><td>12</td><td>3</td><td>22</td><td>-</td><td>-</td><td>3&thinsp;000</td><td>13&thinsp;000</td><td>-</td></tr>
+          <tr><td>net-ethernet-chelsio-cxgb4vf-cxgb4vf.c</td><td>2</td><td>13</td><td>13+1</td><td>67</td><td>118</td><td>49</td><td>128</td><td>-</td><td>861&thinsp;340</td><td>1&thinsp;200</td><td>5&thinsp;300</td><td>-</td></tr>
+          <tr><td>net-usb-hso.c</td><td>4</td><td>11</td><td>0</td><td>156</td><td>234</td><td>155</td><td>233</td><td>-</td><td>-</td><td>2&thinsp;800</td><td>13&thinsp;000</td><td>-</td></tr>
+          <tr><td>media-rc-streamzap.c</td><td>2</td><td>12</td><td>14</td><td>122</td><td>195</td><td>118</td><td>148</td><td>-</td><td>2&thinsp;731</td><td>1&thinsp;900</td><td>9&thinsp;300</td><td>-</td></tr>
+          <tr><td>media-usb-msi2500-msi2500.c</td><td>4</td><td>11+1</td><td>0+3</td><td>167</td><td>187</td><td>25</td><td>31</td><td>-</td><td>-</td><td>1&thinsp;900</td><td>13&thinsp;000</td><td>-</td></tr>
+          <tr><td>usb-gadget-legacy-gadgetfs.c</td><td>3</td><td>12</td><td>0</td><td>71</td><td>94</td><td>225</td><td>429</td><td>-</td><td>-</td><td>1&thinsp;900</td><td>13&thinsp;000</td><td>-</td></tr>
+          <tr><td>block-floppy.c</td><td>0</td><td>13</td><td>0</td><td>35</td><td>65</td><td>21</td><td>51</td><td>-</td><td>-</td><td>1&thinsp;800</td><td>13&thinsp;000</td><td>-</td></tr>
+          <tr><td>net-wireless-mwl8k.c</td><td>4</td><td>13+1</td><td>0+1</td><td>7</td><td>4</td><td>3</td><td>4</td><td>1&thinsp;468&thinsp;537</td><td>-</td><td>1&thinsp;800</td><td>14&thinsp;000</td><td>-</td></tr>
+          <tr><td>net-can-usb-ems_usb.c</td><td>2</td><td>12+2</td><td>12+2</td><td>50</td><td>69</td><td>69</td><td>98</td><td>40&thinsp;806</td><td>80&thinsp;095</td><td>290</td><td>2&thinsp;400</td><td>.12</td></tr>
+          <tr><td>staging-vt6656-vt6656_stage.c</td><td>4</td><td>12+1</td><td>0+1</td><td>22</td><td>47</td><td>28</td><td>103</td><td>-</td><td>-</td><td>1&thinsp;400</td><td>13&thinsp;000</td><td>-</td></tr>
+          <tr><td>net-ethernet-atheros-atl1c-atl1c.c</td><td>3</td><td>13</td><td>0</td><td>41</td><td>51</td><td>79</td><td>177</td><td>-</td><td>-</td><td>1&thinsp;300</td><td>13&thinsp;000</td><td>-</td></tr>
+          <tr><td>net-ethernet-via-via-velocity.c</td><td>5</td><td>13</td><td>0</td><td>112</td><td>189</td><td>111</td><td>188</td><td>-</td><td>-</td><td>1&thinsp;300</td><td>13&thinsp;000</td><td>-</td></tr>
+          <tr><td>net-ethernet-intel-ixgb-ixgb.c</td><td>3</td><td>13</td><td>0</td><td>44</td><td>70</td><td>38</td><td>62</td><td>-</td><td>-</td><td>1&thinsp;300</td><td>13&thinsp;000</td><td>-</td></tr>
+          <tr><td>net-irda-ali-ircc.c</td><td>4</td><td>14</td><td>14</td><td>25</td><td>28</td><td>64</td><td>306</td><td>45&thinsp;198</td><td>376&thinsp;932</td><td>490</td><td>5&thinsp;300</td><td>.092</td></tr>
+          <tr><td>media-usb-pwc-pwc.c</td><td>4</td><td>11+3</td><td>0+2</td><td>55</td><td>63</td><td>100</td><td>138</td><td>1&thinsp;148&thinsp;104</td><td>-</td><td>1&thinsp;100</td><td>13&thinsp;000</td><td>-</td></tr>
+          <tr><td>net-fddi-defxx.c</td><td>3</td><td>13</td><td>0</td><td>107</td><td>187</td><td>104</td><td>184</td><td>-</td><td>-</td><td>1&thinsp;100</td><td>13&thinsp;000</td><td>-</td></tr>
+          <tr><td>mfd-dln2.c</td><td>3</td><td>13+1</td><td>13+1</td><td>84</td><td>97</td><td>64</td><td>78</td><td>96&thinsp;456</td><td>227&thinsp;566</td><td>320</td><td>3&thinsp;700</td><td>.086</td></tr>
+          <tr><td>misc-genwqe-genwqe_card.c</td><td>2</td><td>13</td><td>0</td><td>86</td><td>146</td><td>69</td><td>129</td><td>-</td><td>-</td><td>1&thinsp;100</td><td>13&thinsp;000</td><td>-</td></tr>
+          <tr><td>net-ethernet-sis-sis900.c</td><td>3</td><td>13</td><td>0</td><td>97</td><td>123</td><td>326</td><td>402</td><td>-</td><td>-</td><td>1&thinsp;100</td><td>13&thinsp;000</td><td>-</td></tr>
+          <tr><td>usb-misc-usbtest.c</td><td>5</td><td>12+2</td><td>12+2</td><td>20</td><td>32</td><td>12</td><td>20</td><td>169&thinsp;695</td><td>8&thinsp;058&thinsp;273</td><td>270</td><td>3&thinsp;200</td><td>.083</td></tr>
+          <tr><td>isdn-gigaset-bas_gigaset.c</td><td>4</td><td>13+1</td><td>13+1</td><td>35</td><td>64</td><td>75</td><td>119</td><td>15&thinsp;934</td><td>884&thinsp;667</td><td>190</td><td>4&thinsp;500</td><td>.043</td></tr>
+        </tbody>
+    </table>
+
+
+</div>
+
+</body>
+</html>

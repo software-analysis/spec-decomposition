@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE benchmark SYSTEM "benchmark.dtd">
+
+<benchmark tool="cpachecker" timelimit="12660" hardtimelimit="14000" memlimit="30GB" cpuCores="4">
+
+  <option name="-heap">26000M</option>
+  <option name="-compile"/>
+  <option name="-noout"/>
+  <option name="-disable-java-assertions"/>
+  <option name="-skipRecursion" />
+
+  <option name="-spec">${benchmark_path}/specs/LDV_08_1a_encode.spc</option>
+  <option name="-spec">${benchmark_path}/specs/LDV_10_1a_encode.spc</option>
+  <option name="-spec">${benchmark_path}/specs/LDV_32_1a_encode.spc</option>
+  <option name="-spec">${benchmark_path}/specs/LDV_43_1a_encode.spc</option>
+  <option name="-spec">${benchmark_path}/specs/LDV_68_1a_encode.spc</option>
+  <option name="-spec">${benchmark_path}/specs/LDV_68_1b_encode.spc</option>
+  <option name="-spec">${benchmark_path}/specs/LDV_77_1a_encode.spc</option>
+  <option name="-spec">${benchmark_path}/specs/LDV_101_1a_encode.spc</option>
+  <option name="-spec">${benchmark_path}/specs/LDV_106_1a_encode.spc</option>
+  <option name="-spec">${benchmark_path}/specs/LDV_118_1a_encode.spc</option>
+  <option name="-spec">${benchmark_path}/specs/LDV_129_1a_encode.spc</option>
+  <option name="-spec">${benchmark_path}/specs/LDV_132_1a_encode.spc</option>
+  <option name="-spec">${benchmark_path}/specs/LDV_134_1a_encode.spc</option>
+  <option name="-spec">${benchmark_path}/specs/LDV_147_1a_encode.spc</option>
+
+  <sourcefiles name="main">
+      <includesfile>./tasks-plain-main0-atleast2-rand250/main.set</includesfile>
+      <option name="-entryfunction">main</option>
+  </sourcefiles>
+
+  <requiredfiles>./specs/*</requiredfiles>
+
+  <rundefinition name="1.RQ1-AllThenNoneOperator.main.LDV-First14">
+    <option name="-mpa-alg-predicate-abelf" />
+    <option name="-setprop">solver.solver=SMTINTERPOL</option>
+    <option name="-setprop">automata.properties.granularity=BASENAME</option>
+    <option name="-setprop">analysis.mpa.partition.time.cpu=12600s</option>
+    <option name="-setprop">analysis.mpa.partition.operator=AllThenNoneOperator</option>
+  </rundefinition>
+
+</benchmark>

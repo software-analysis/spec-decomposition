@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE benchmark SYSTEM "benchmark.dtd">
+
+<benchmark tool="cpachecker" timelimit="12630" hardtimelimit="14000" memlimit="30GB" cpuCores="4">
+
+  <option name="-heap">26000M</option>
+
+  <option name="-noout"/>
+  <option name="-disable-java-assertions"/>
+  <option name="-skipRecursion" />
+
+  <option name="-setprop">statistics.memory=false</option>
+  <option name="-setprop">cpa.predicate.precisionStatistics=false</option>
+  <option name="-setprop">reachedSet.printDetailedStatistics=false</option>
+
+  <option name="-mpa-alg-predicate-abelf"/>
+  <option name="-setprop">automata.properties.granularity=BASENAME</option>
+
+  <option name="-spec">${benchmark_path}/specs/LDV_08_1a_encode.spc</option>
+  <option name="-spec">${benchmark_path}/specs/LDV_10_1a_encode.spc</option>
+  <option name="-spec">${benchmark_path}/specs/LDV_32_1a_encode.spc</option>
+  <option name="-spec">${benchmark_path}/specs/LDV_43_1a_encode.spc</option>
+  <option name="-spec">${benchmark_path}/specs/LDV_68_1a_encode.spc</option>
+  <option name="-spec">${benchmark_path}/specs/LDV_68_1b_encode.spc</option>
+  <option name="-spec">${benchmark_path}/specs/LDV_77_1a_encode.spc</option>
+  <option name="-spec">${benchmark_path}/specs/LDV_101_1a_encode.spc</option>
+  <option name="-spec">${benchmark_path}/specs/LDV_106_1a_encode.spc</option>
+  <option name="-spec">${benchmark_path}/specs/LDV_118_1a_encode.spc</option>
+  <option name="-spec">${benchmark_path}/specs/LDV_129_1a_encode.spc</option>
+  <option name="-spec">${benchmark_path}/specs/LDV_132_1a_encode.spc</option>
+  <option name="-spec">${benchmark_path}/specs/LDV_134_1a_encode.spc</option>
+  <option name="-spec">${benchmark_path}/specs/LDV_147_1a_encode.spc</option>
+
+  <sourcefiles name="main">
+    <includesfile>./tasks-plain-main0-atleast2-rand250/main.set</includesfile>
+    <option name="-entryfunction">main</option>
+  </sourcefiles>
+
+  <requiredfiles>./specs/*</requiredfiles>
+
+  <rundefinition name="0.Rq3-AllThenIrrelevantThenRelevantSepOperator-RefCount.main.LDV-First14">
+    <option name="-setprop">analysis.mpa.partition.operator=AllThenIrrelevanceThenRelevantSepOperator</option>
+    <option name="-setprop">analysis.mpa.partition.time.cpu=900</option>
+    <option name="-setprop">analysis.mpa.partition.first.time.cpu=200</option>
+    <option name="-setprop">analysis.mpa.partition.second.time.cpu=900</option>
+    <option name="-setprop">analysis.mpa.budget.limit.refinementsTimesMore=2</option>
+    <option name="-setprop">analysis.mpa.budget.limit.numRefinements=10</option>
+  </rundefinition>
+
+</benchmark>
